@@ -470,7 +470,7 @@
   align-items: center;
   justify-content: center;
 }
-.audito-hide {
+.audio-hide {
   display: none;
 }
 @media (max-width: 768px) {
