@@ -1,273 +1,457 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Document Information</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"
+    />
     <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="./assets/js/popper.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
     <script>
-    $(function() {
-        $('[data-toggle="popover"]').popover()
-    })
+      $(function() {
+        $('[data-toggle="popover"]').popover();
+      });
     </script>
-</head>
+  </head>
 
-<body>
-    <div class="container" style="margin-bottom: 10px" id="wrapper">
-        <div class="pageHeader">
-            <button class="btn btn-link" (click)="back()"> <i class="material-icons">arrow_back</i> BACK</button>
-            <img alt="logo" src="./assets/img/logo.svg" class="img-fluid float-right headerLogo" />
+  <body>
+    <div class="container" id="wrapper">
+      <div class="row pageHeader">
+        <div class="col-7">
+          <button class="btn btn-link" (click)="back()">
+            <i class="material-icons">arrow_back</i> BACK
+          </button>
         </div>
-        <div class="col-sm-12">
-            <div class="col-sm-6">
-                <table class="table table-borderless infoTbl">
-                    <tr>
-                        <th colspan="2">FACE VERIFICATION RESULT</th>
-                    </tr>
-                    <tr>
-                        <td>Facial Match Result </td>
-                        <td style="color: green;">Success</td>
-                    </tr>
-                    <tr>
-                        <td>Facial Match Score </td>
-                        <td >85</td>
-                    </tr>
-                </table>
-            </div>
+        <div class="col-5">
+          <div class="col-7 pageLanguage float-left">
+            <label>Language :</label>
+            <select class="selectpicker ">
+              <option>English</option>
+              <option>Spanish</option>
+            </select>
+          </div>
+          <div class="float-right col-5">
+            <img
+              alt="logo"
+              src="./assets/img/verifeye-logo.svg"
+              class="img-fluid headerLogo"
+              width="180"
+            />
+          </div>
         </div>
-        <hr>
-        <div class="col-sm-12 contentClass">
-            <div class="col-sm-6" style="width: 49%;float: left;border-right: 1px dotted gray;">
-                <table class="table table-borderless infoTbl">
-                    <tr>
-                        <th colspan="2">DOCUMENT VERIFICATION RESULT</th>
-                    </tr>
-                    <tr>
-                        <td>Verification Status </td>
-                        <td style="color: green;" >Successful</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IDAuthentication">
-                        <td>ID Authentication </td>
-                        <td>Passed</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IDName">
-                        <td>ID Name </td>
-                        <td>Oklahoma (OK) Driver License</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IDType">
-                        <td>ID Type </td>
-                        <td>Drivers License</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.BirthDate">
-                        <td>Birth Date </td>
-                        <td>04\/01\/1971</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.DocumentNumber">
-                        <td>Document Number </td>
-                        <td>12541241</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.ExpirationDate">
-                        <td>Expiration Date </td>
-                        <td>04\/01\/1971</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.FirstName">
-                        <td>First Name </td>
-                        <td>abc</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.MiddleName">
-                        <td>Middle Name </td>
-                        <td>xyz</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Surname">
-                        <td>Surname </td>
-                        <td>www</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.FullName">
-                        <td>Full Name </td>
-                        <td>sdfg fd dfg</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.GivenName">
-                        <td>Given Name </td>
-                        <td>dfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IssueDate">
-                        <td>Issue Date </td>
-                        <td>345345</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IssuingStateCode">
-                        <td>Issuing State Code </td>
-                        <td>55555</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IssuingStateName">
-                        <td>Issuing State Name </td>
-                        <td>dgdfg</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Sex">
-                        <td>Sex </td>
-                        <td>fdgdfg</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Address">
-                        <td>Address </td>
-                        <td>fgdfg,dfg ,fgdg, 1020</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.AddressCity">
-                        <td>Address City </td>
-                        <td>terter</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.AddressLine1">
-                        <td>Address Line1 </td>
-                        <td>aaaaa</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.AddressPostalCode">
-                        <td>Address Postal Code </td>
-                        <td>5345</td>
-                    </tr>
-                    <tr *ngIf="verifyDocumentData && verifyDocumentData.response.AddressState">
-                        <td>Address State </td>
-                        <td>dfgdfg</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-sm-6" style="width: 49%;float: left;">
-                <table class="table table-borderless infoTbl">
-                    <tr>
-                        <th colspan="2">ADDRESS VERIFICATION RESULT</th>
-                    </tr>
-                    <tr *ngIf="!verifyAddressInfo || !verifyAddressInfo.Records[0].Results">
-                        <td>Address Status </td>
-                        <td>Address Verification Failed, Address not detect in address documents</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Results">
-                        <td>Address Status </td>
-                        <td>aaaa</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].FormattedAddress">
-                        <td>Formatted Address </td>
-                        <td>asdasd</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Organization">
-                        <td>Organization </td>
-                        <td>dfsdfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine1">
-                        <td>AddressLine1 </td>
-                        <td>df sdf sdf sd</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine2">
-                        <td>AddressLine2 </td>
-                        <td>df sf sfs</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine3">
-                        <td>AddressLine3 </td>
-                        <td>dfsdfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine4">
-                        <td>AddressLine4 </td>
-                        <td>fdggdfgdfg</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine5">
-                        <td>AddressLine5 </td>
-                        <td>fgdfg</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine6">
-                        <td>AddressLine6 </td>
-                        <td>fdggdfg</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine7">
-                        <td>AddressLine7 </td>
-                        <td>dffsdfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine8">
-                        <td>AddressLine8 </td>
-                        <td>dfsdfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Locality">
-                        <td>Locality </td>
-                        <td>sssss</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].SubAdministrativeArea">
-                        <td>Sub Administrative Area </td>
-                        <td>cccc</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AdministrativeArea">
-                        <td>Administrative Area </td>
-                        <td>rrrr</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].PostalCode">
-                        <td>PostalCode </td>
-                        <td>3433</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressType">
-                        <td>AddressType </td>
-                        <td>dfsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].AddressKey">
-                        <td>AddressKey </td>
-                        <td>dfsdfsfdsdf</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].CountryName">
-                        <td>Country Name </td>
-                        <td>dfsdfsfd</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].CountryISO3166_1_Alpha2">
-                        <td>CountryISO3166_1_Alpha2 </td>
-                        <td>45</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].CountryISO3166_1_Alpha3">
-                        <td>CountryISO3166_1_Alpha3 </td>
-                        <td>3465</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].CountryISO3166_1_Numeric">
-                        <td>CountryISO3166_1_Numeric </td>
-                        <td>4534535</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].CountrySubdivisionCode">
-                        <td>Country Subdivision Code </td>
-                        <td>234</td>
-                    </tr>
-                    <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Longitude">
-                        <td>Longitude </td>
-                        <td>54645</td>
-                    </tr>
-                    <tr>
-                    </tr>
-                </table>
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-borderless infoTbl">
+            <tr>
+              <th colspan="2">FACE VERIFICATION RESULT</th>
+            </tr>
+            <tr>
+              <td>Facial Match Result</td>
+              <td class="color-green">Success</td>
+            </tr>
+            <tr>
+              <td>Facial Match Score</td>
+              <td>85</td>
+            </tr>
+          </table>
         </div>
-        <div class="col-sm-12 contentClass" style="float: left;">
-            <button class="btn btn-primary px-5 btn-lg mt-4" style="float: right;" (click)="next()">Next</button>
+      </div>
+      <hr />
+      <div class="contentClass border-between row">
+        <div class="col-md-6">
+          <table class="table table-borderless infoTbl">
+            <tr>
+              <th colspan="2">DOCUMENT VERIFICATION RESULT</th>
+            </tr>
+            <tr>
+              <td>Verification Status</td>
+              <td class="color-green">Successful</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData &&
+                verifyDocumentData.response.IDAuthentication
+              "
+            >
+              <td>ID Authentication</td>
+              <td>Passed</td>
+            </tr>
+            <tr
+              *ngIf="verifyDocumentData && verifyDocumentData.response.IDName"
+            >
+              <td>ID Name</td>
+              <td>Oklahoma (OK) Driver License</td>
+            </tr>
+            <tr
+              *ngIf="verifyDocumentData && verifyDocumentData.response.IDType"
+            >
+              <td>ID Type</td>
+              <td>Drivers License</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.BirthDate
+              "
+            >
+              <td>Birth Date</td>
+              <td>04\/01\/1971</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.DocumentNumber
+              "
+            >
+              <td>Document Number</td>
+              <td>12541241</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.ExpirationDate
+              "
+            >
+              <td>Expiration Date</td>
+              <td>04\/01\/1971</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.FirstName
+              "
+            >
+              <td>First Name</td>
+              <td>abc</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.MiddleName
+              "
+            >
+              <td>Middle Name</td>
+              <td>xyz</td>
+            </tr>
+            <tr
+              *ngIf="verifyDocumentData && verifyDocumentData.response.Surname"
+            >
+              <td>Surname</td>
+              <td>www</td>
+            </tr>
+            <tr
+              *ngIf="verifyDocumentData && verifyDocumentData.response.FullName"
+            >
+              <td>Full Name</td>
+              <td>sdfg fd dfg</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.GivenName
+              "
+            >
+              <td>Given Name</td>
+              <td>dfsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.IssueDate
+              "
+            >
+              <td>Issue Date</td>
+              <td>345345</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData &&
+                verifyDocumentData.response.IssuingStateCode
+              "
+            >
+              <td>Issuing State Code</td>
+              <td>55555</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData &&
+                verifyDocumentData.response.IssuingStateName
+              "
+            >
+              <td>Issuing State Name</td>
+              <td>dgdfg</td>
+            </tr>
+            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Sex">
+              <td>Sex</td>
+              <td>fdgdfg</td>
+            </tr>
+            <tr
+              *ngIf="verifyDocumentData && verifyDocumentData.response.Address"
+            >
+              <td>Address</td>
+              <td>fgdfg,dfg ,fgdg, 1020</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.AddressCity
+              "
+            >
+              <td>Address City</td>
+              <td>terter</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.AddressLine1
+              "
+            >
+              <td>Address Line1</td>
+              <td>aaaaa</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData &&
+                verifyDocumentData.response.AddressPostalCode
+              "
+            >
+              <td>Address Postal Code</td>
+              <td>5345</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyDocumentData && verifyDocumentData.response.AddressState
+              "
+            >
+              <td>Address State</td>
+              <td>dfgdfg</td>
+            </tr>
+            <tr></tr>
+          </table>
         </div>
-        <!-- </div> -->
-        <div class="row footerDiv">
-            <div class="col-sm-12">
-                <div class="col-sm-6 float-left">
-                    <ul class="bottomNav">
-                        <li> <a class="nav-link" routerLink="/FAQ" href="javascript:void(0);">FAQ</a> </li>
-                        <li> <a class="nav-link" routerLink="/contact" href="javascript:void(0);">Contact us</a> </li>
-                        <li> <a class="nav-link" routerLink="/doc" href="javascript:void(0);">How to integrate our service</a> </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 pageLanguage float-right">
-                    <label>Language</label>
-                    <select class="selectpicker ">
-                        <option>English</option>
-                        <option>Spanish</option>
-                    </select>
-                </div>
-            </div>
+        <div class="col-md-6">
+          <table class="table table-borderless infoTbl">
+            <tr>
+              <th colspan="2">ADDRESS VERIFICATION RESULT</th>
+            </tr>
+            <tr
+              *ngIf="
+                !verifyAddressInfo || !verifyAddressInfo.Records[0].Results
+              "
+            >
+              <td>Address Status</td>
+              <td>
+                Address Verification Failed, Address not detect in address
+                documents
+              </td>
+            </tr>
+            <tr
+              *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Results"
+            >
+              <td>Address Status</td>
+              <td>aaaa</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].FormattedAddress
+              "
+            >
+              <td>Formatted Address</td>
+              <td>asdasd</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].Organization
+              "
+            >
+              <td>Organization</td>
+              <td>dfsdfsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine1
+              "
+            >
+              <td>AddressLine1</td>
+              <td>df sdf sdf sd</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine2
+              "
+            >
+              <td>AddressLine2</td>
+              <td>df sf sfs</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine3
+              "
+            >
+              <td>AddressLine3</td>
+              <td>dfsdfsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine4
+              "
+            >
+              <td>AddressLine4</td>
+              <td>fdggdfgdfg</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine5
+              "
+            >
+              <td>AddressLine5</td>
+              <td>fgdfg</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine6
+              "
+            >
+              <td>AddressLine6</td>
+              <td>fdggdfg</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine7
+              "
+            >
+              <td>AddressLine7</td>
+              <td>dffsdfsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine8
+              "
+            >
+              <td>AddressLine8</td>
+              <td>dfsdfsdf</td>
+            </tr>
+            <tr
+              *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Locality"
+            >
+              <td>Locality</td>
+              <td>sssss</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].SubAdministrativeArea
+              "
+            >
+              <td>Sub Administrative Area</td>
+              <td>cccc</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].AdministrativeArea
+              "
+            >
+              <td>Administrative Area</td>
+              <td>rrrr</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].PostalCode
+              "
+            >
+              <td>PostalCode</td>
+              <td>3433</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressType
+              "
+            >
+              <td>AddressType</td>
+              <td>dfsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].AddressKey
+              "
+            >
+              <td>AddressKey</td>
+              <td>dfsdfsfdsdf</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].CountryName
+              "
+            >
+              <td>Country Name</td>
+              <td>dfsdfsfd</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].CountryISO3166_1_Alpha2
+              "
+            >
+              <td>CountryISO3166_1_Alpha2</td>
+              <td>45</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].CountryISO3166_1_Alpha3
+              "
+            >
+              <td>CountryISO3166_1_Alpha3</td>
+              <td>3465</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].CountryISO3166_1_Numeric
+              "
+            >
+              <td>CountryISO3166_1_Numeric</td>
+              <td>4534535</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo &&
+                verifyAddressInfo.Records[0].CountrySubdivisionCode
+              "
+            >
+              <td>Country Subdivision Code</td>
+              <td>234</td>
+            </tr>
+            <tr
+              *ngIf="
+                verifyAddressInfo && verifyAddressInfo.Records[0].Longitude
+              "
+            >
+              <td>Longitude</td>
+              <td>54645</td>
+            </tr>
+            <tr></tr>
+          </table>
         </div>
+      </div>
+      <div class="col-md-12">
+        <button
+          class="btn btn-primary px-5 btn-lg mt-4 mb-4 float-right"
+          (click)="next()"
+        >
+          Next
+        </button>
+      </div>
+      <!-- </div> -->
     </div>
-</body>
-
+  </body>
 </html>

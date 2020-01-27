@@ -1,303 +1,494 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>Document Information</title>
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="stylesheet" href="./assets/css/custom.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"
+    />
     <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
     <script src="./assets/js/popper.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
     <script>
-        $(function () {
-            $('[data-toggle="popover"]').popover()
-        })
+      $(function() {
+        $('[data-toggle="popover"]').popover();
+      });
     </script>
+  </head>
 
-
-
-</head>
-
-<body>
+  <body>
     <div class="container" id="wrapper">
-        <div class="pageHeader">
-            <button class="btn btn-link" (click)="back()" id="idBack"> <i class="material-icons" >arrow_back</i> BACK</button>
-            <img alt="logo" src="./assets/img/logo.svg" class="img-fluid float-right headerLogo" />
+      <div class="row pageHeader">
+        <div class="col-7">
+          <button class="btn btn-link" (click)="back()" id="idBack">
+            <i class="material-icons">arrow_back</i> BACK
+          </button>
         </div>
-        <div class="row contentClass">
-            <div class="col-sm-12">
-                <h2 class="display-4" id="idDocInfo">Document Information</h2>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <form class="thm-form">
-                            <div class="form-group float-left w-100">
-                                <label id="idLang">Language</label>
-                                <select class="form-control border" data-width="100%" [(ngModel)]="documentJson.language" name="language">
-                                    <option value="ar">Arabic</option>
-                                    <option value="zh">Chinese</option>
-                                    <option value="da">Danish</option>
-                                    <option value="nl">Dutch</option>
-                                    <option value="en" selected="">English</option>
-                                    <option value="et">Estonian</option>
-                                    <option value="fr">French</option>
-                                    <option value="de">German</option>
-                                    <option value="is">Icelandic</option>
-                                    <option value="in">Indonesian</option>
-                                    <option value="it">Italian</option>
-                                    <option value="ja">Japanese</option>
-                                    <option value="ko">Korean</option>
-                                    <option value="no">Norwegian</option>
-                                    <option value="pl">Polish</option>
-                                    <option value="pt">Portuguese</option>
-                                    <option value="ro">Romanian</option>
-                                    <option value="ru">Russian</option>
-                                    <option value="es">Spanish</option>
-                                    <option value="sv">Swedish</option>
-                                    <option value="tr" id="idTurk">Turkish</option>
-                                </select>
-                            </div>
-                            <div class="form-group float-left w-100">
-                                <label id="idContInfo">Contact Information</label>
-                                <div>
-                                    <div>
-                                        <input class="CountryNumberInput form-control" name="InputPhone" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group float-left w-100">
-                                <label id="idDocIdPhoto">Document with Photo</label> <small class="float-right">(Supported types: jpeg,png. Max size is 16MB)</small>
-                                <select class="form-control border" name="docWithPhoto" data-width="100%" [(ngModel)]="documentJson.docWithPhoto" id="docWithPhoto" (change)="selectDocWithPhoto()" onchange="selectDocWithPhoto()">
-                                    <option value="" id="idDocument" selected disabled >Document</option>
-                                    <option value="passport" id="idPassport">Passport</option>
-                                    <option value="nationalId" id="idNatID">National ID Card</option>
-                                    <!-- <option value="driverLicence">Driver's Licence</option> -->
-                                </select>
-                                <div>
-                                    <div class="docImgDiv" id="show_docWithPhoto1" *ngIf="documentJson.docWithPhoto === 'passport' || documentJson.docWithPhoto  === 'driverLicence'">
-                                        <div style="width: 15%;float: left;">
-                                            <img alt="front-image" src="./assets/img/passport-spread.svg" class="img-fluid docImg" (click)="imageInput.click()" style="cursor: pointer;width: 75%;margin-bottom: 10px;" />
-                                            <label style="font-size: 14px;color: #199aad;" >Upload passport front image</label>
-                                            <!-- <label style="font-size: 14px;color: #199aad;" >Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
-                                        </div>
-                                        <input class="form-control d-none" type="file" (change)="selectFiles($event, 'frontImage')" #imageInput />
-                                        <img *ngIf="preFrontImg" [src]="preFrontImg" height="80"> <br />
-                                    </div>
-                                    <div class="docImgDiv float-left w-100" id="show_docWithPhoto2" *ngIf="documentJson.docWithPhoto  === 'nationalId'">
-                                        <div style="width: 15%;float: left;">
-                                            <img alt="front-image" src="./assets/img/card-front.svg" class="img-fluid docImg" (click)="imageInput.click()" style="cursor: pointer;width: 75%;margin-bottom: 10px;" />
-                                            <label style="font-size: 14px;color: #199aad;">Upload ID card front image</label>
-                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
-                                        </div>
-                                        <input class="form-control d-none" type="file" (change)="selectFiles($event, 'frontImage')" #imageInput />
-                                        <img *ngIf="preFrontImg" [src]="preFrontImg" height="80"> <br />
-                                    </div>
-                                    <div class="docImgDiv float-left w-100" id="show_docWithPhoto3" *ngIf="documentJson.docWithPhoto  === 'nationalId'">
-                                        <div style="width: 15%;float: left;">
-                                            <img alt="front-image" src="./assets/img/card-front.svg" class="img-fluid docImg" (click)="imageInput.click()" style="cursor: pointer;width: 75%;margin-bottom: 10px;" />
-                                            <label style="font-size: 14px;color: #199aad;">Upload ID card back image</label>
-
-                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} back image</label> -->
-                                        </div>
-                                        <input class="form-control d-none" type="file" (change)="selectFiles($event, 'backImage')" #imageInput />
-                                        <img *ngIf="preBackImg" [src]="preBackImg" height="80"> <br />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group float-left w-100">
-                                <label id="idPhoto">Photo</label> <small class="float-right">(Supported types: jpeg,png. Max size is 16MB)</small>
-                                <div class="docImgDiv">
-                                    <div style="width: 15%;float: left;">
-                                        <img alt="upload-selfie" src="./assets/img/selfie.svg" class="img-fluid docImg" (click)="imageInput.click()" style="cursor:pointer;margin-bottom:10px;width:90%;" />
-                                        <label style="font-size: 14px;color: #199aad;" id="idDocIdPhoto2">Upload photo of me</label>
-                                    </div>
-                                    <input class="form-control d-none" type="file" (change)="selectFiles($event, 'selfieImage')" #imageInput />
-                                    <div style="width: 15%;margin: 0px 18px;float: left;">
-                                        <img alt="take-selfie" src="./assets/img/camera.svg" class="img-fluid docImg" (click)="takeSelfie()" style="cursor: pointer;margin-bottom: 10px;width:90%;" />
-                                        <label style="font-size: 14px;color: #199aad;" id="idDocIdPhoto3">Take selfie of me</label>
-                                    </div>
-                                    <div style="width: 15%;float: left;">
-                                        <img *ngIf="preSelfieImg" [src]="preSelfieImg" height="80" style="cursor:pointer;margin-bottom:10px;"> <br />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group float-left w-100">
-                                <label class="float-left" id="idAddressinDoc">Address in document</label>
-                                <input class="form-control" name="InputAddress" type="text">
-                            </div>
-                            <div class="form-group float-left w-100">
-                                <label id="idDocAddress">Document with your address</label> <small class="float-right">(Supported types: jpeg,png. Max size is 16MB)</small>
-                                <select class="form-control border" name="docWithAddress" data-width="100%" [(ngModel)]="documentJson.docWithAddress" id="docWithAddress" onchange="selectDocWithAddress()">
-                                    <option value="" id="idDocument2" selected disabled>Document</option>
-                                    <!-- <option value="utilityBill">Utility Bill</option> -->
-                                    <option value="bankStatement">Bank Statement</option>
-                                    <option value="rentAgreement">Rental Agreement</option>
-                                    <!-- <option value="driverLicenceAddress">Driver's License</option> -->
-                                </select>
-                                <div>
-                                    <div class="docImgDiv" *ngIf="documentJson.docWithAddress" id="show_docWithAddress">
-                                        <div style="width: 15%;float: left;">
-                                            <img alt="front-image" src="./assets/img/document.svg" class="img-fluid docImg" (click)="imageInput.click()" style="cursor: pointer;width: 75%;margin-bottom: 10px;" />
-                                            <label style="font-size: 14px;color: #199aad;" id="uploadAddressLbl"></label>
-
-                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithAddress === 'utilityBill' ? 'utility bill' : documentJson.docWithAddress === 'bankStatement' ? 'bank statement' : documentJson.docWithAddress === 'rentAgreement' ?'rent agreement' : 'driving licence' }} image</label> -->
-                                        </div>
-                                        <input class="form-control d-none" type="file" (change)="selectFiles($event, 'addressImage')" #imageInput />
-                                        <img *ngIf="preAddressImg" [src]="preAddressImg" height="80"> <br />
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+        <div class="col-5">
+          <div class="col-7 pageLanguage float-left">
+            <label>Language :</label>
+            <select class="selectpicker ">
+              <option>English</option>
+              <option>Spanish</option>
+            </select>
+          </div>
+          <div class="float-right col-5">
+            <img
+              alt="logo"
+              src="./assets/img/verifeye-logo.svg"
+              class="img-fluid headerLogo"
+              width="180"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row contentClass">
+        <div class="col-sm-12">
+          <h2 class="display-4" id="idDocInfo">Document Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <form class="thm-form">
+                <div class="form-group float-left w-100">
+                  <label id="idLang">Language</label>
+                  <select
+                    class="form-control border"
+                    data-width="100%"
+                    [(ngModel)]="documentJson.language"
+                    name="language"
+                  >
+                    <option value="ar">Arabic</option>
+                    <option value="zh">Chinese</option>
+                    <option value="da">Danish</option>
+                    <option value="nl">Dutch</option>
+                    <option value="en" selected="">English</option>
+                    <option value="et">Estonian</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="is">Icelandic</option>
+                    <option value="in">Indonesian</option>
+                    <option value="it">Italian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="no">Norwegian</option>
+                    <option value="pl">Polish</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ro">Romanian</option>
+                    <option value="ru">Russian</option>
+                    <option value="es">Spanish</option>
+                    <option value="sv">Swedish</option>
+                    <option value="tr" id="idTurk">Turkish</option>
+                  </select>
+                </div>
+                <div class="form-group float-left w-100">
+                  <label id="idContInfo">Contact Information</label>
+                  <div>
+                    <div>
+                      <input
+                        class="CountryNumberInput form-control"
+                        name="InputPhone"
+                        type="text"
+                      />
                     </div>
-                    <div class="col-sm-6 my-auto text-justify">
-                        <p style="width: 70%; margin: 0 auto; margin-bottom: 25px;font-size: 15px;color: #999a9a;" id="idDocInfoHelp01">
-                            Please upload the images of chosen document. Make sure that the uploaded images is are of acceptable quality.
-                        </p>
-                        <p style="width: 70%; margin: 0 auto;font-size: 15px;color: #999a9a;" id="idDocInfoHelp02">
-                            Make a selfie or upload a photo of yourself. When taking photo please avoid using sunglasses or anything else that hinders face verification.
-                        </p>
+                  </div>
+                </div>
+                <div class="form-group float-left w-100">
+                  <label id="idDocIdPhoto">Document with Photo</label>
+                  <small class="float-right"
+                    >(Supported types: jpeg,png. Max size is 16MB)</small
+                  >
+                  <select
+                    class="form-control border"
+                    name="docWithPhoto"
+                    data-width="100%"
+                    [(ngModel)]="documentJson.docWithPhoto"
+                    id="docWithPhoto"
+                    (change)="selectDocWithPhoto()"
+                    onchange="selectDocWithPhoto()"
+                  >
+                    <option value="" id="idDocument" selected disabled
+                      >Document</option
+                    >
+                    <option value="passport" id="idPassport">Passport</option>
+                    <option value="nationalId" id="idNatID"
+                      >National ID Card</option
+                    >
+                    <!-- <option value="driverLicence">Driver's Licence</option> -->
+                  </select>
+                  <div>
+                    <div
+                      class="docImgDiv row"
+                      id="show_docWithPhoto1"
+                      *ngIf="
+                        documentJson.docWithPhoto === 'passport' ||
+                        documentJson.docWithPhoto === 'driverLicence'
+                      "
+                    >
+                      <div class="col-md-3">
+                        <img
+                          alt="front-image"
+                          src="./assets/img/passport-spread.svg"
+                          class="img-fluid docImg"
+                          (click)="imageInput.click()"
+                        />
+                        <label class="img-label"
+                          >Upload passport front image</label
+                        >
+                        <!-- <label style="font-size: 14px;color: #199aad;" >Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
+                      </div>
+                      <div class="col-md-3">
+                        <input
+                          class="form-control d-none"
+                          type="file"
+                          (change)="selectFiles($event, 'frontImage')"
+                          #imageInput
+                        />
+                        <img
+                          *ngIf="preFrontImg"
+                          [src]="preFrontImg"
+                          height="80"
+                        />
+                      </div>
                     </div>
+                    <div
+                      class="docImgDiv col-md-3"
+                      id="show_docWithPhoto2"
+                      *ngIf="documentJson.docWithPhoto === 'nationalId'"
+                    >
+                      <div>
+                        <img
+                          alt="front-image"
+                          src="./assets/img/card-front.svg"
+                          class="img-fluid docImg"
+                          (click)="imageInput.click()"
+                        />
+                        <label class="img-label"
+                          >Upload ID card front image</label
+                        >
+                        <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
+                      </div>
+                      <input
+                        class="form-control d-none"
+                        type="file"
+                        (change)="selectFiles($event, 'frontImage')"
+                        #imageInput
+                      />
+                      <img
+                        *ngIf="preFrontImg"
+                        [src]="preFrontImg"
+                        height="80"
+                      />
+                      <br />
+                    </div>
+                    <div
+                      class="docImgDiv col-md-3"
+                      id="show_docWithPhoto3"
+                      *ngIf="documentJson.docWithPhoto === 'nationalId'"
+                    >
+                      <div>
+                        <img
+                          alt="front-image"
+                          src="./assets/img/card-front.svg"
+                          class="img-fluid docImg"
+                          (click)="imageInput.click()"
+                        />
+                        <label class="img-label"
+                          >Upload ID card back image</label
+                        >
+
+                        <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} back image</label> -->
+                      </div>
+                      <input
+                        class="form-control d-none"
+                        type="file"
+                        (change)="selectFiles($event, 'backImage')"
+                        #imageInput
+                      />
+                      <img *ngIf="preBackImg" [src]="preBackImg" height="80" />
+                      <br />
+                    </div>
+                  </div>
                 </div>
-                <button class="btn btn-primary px-5 btn-lg mt-4" id="idSend" (click)="generateCode()">Send</button>
+                <div class="form-group float-left w-100">
+                  <label id="idPhoto">Photo</label>
+                  <small class="float-right"
+                    >(Supported types: jpeg,png. Max size is 16MB)</small
+                  >
+                  <div class="docImgDiv row">
+                    <div class="col-md-3">
+                      <img
+                        alt="upload-selfie"
+                        src="./assets/img/selfie.svg"
+                        class="img-fluid docImg"
+                        (click)="imageInput.click()"
+                      />
+                      <label class="img-label" id="idDocIdPhoto2"
+                        >Upload photo of me</label
+                      >
+                    </div>
+                    <input
+                      class="form-control d-none"
+                      type="file"
+                      (change)="selectFiles($event, 'selfieImage')"
+                      #imageInput
+                    />
+                    <div class="col-md-3">
+                      <img
+                        alt="take-selfie"
+                        src="./assets/img/camera.svg"
+                        class="img-fluid docImg"
+                        (click)="takeSelfie()"
+                      />
+                      <label class="img-label" id="idDocIdPhoto3"
+                        >Take selfie of me</label
+                      >
+                    </div>
+                    <div class="col-md-3">
+                      <img
+                        *ngIf="preSelfieImg"
+                        [src]="preSelfieImg"
+                        height="80"
+                        style="cursor:pointer;margin-bottom:10px;"
+                      />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group float-left w-100">
+                  <label class="float-left" id="idAddressinDoc"
+                    >Address in document</label
+                  >
+                  <input class="form-control" name="InputAddress" type="text" />
+                </div>
+                <div class="form-group float-left w-100">
+                  <label id="idDocAddress">Document with your address</label>
+                  <small class="float-right"
+                    >(Supported types: jpeg,png. Max size is 16MB)</small
+                  >
+                  <select
+                    class="form-control border"
+                    name="docWithAddress"
+                    data-width="100%"
+                    [(ngModel)]="documentJson.docWithAddress"
+                    id="docWithAddress"
+                    onchange="selectDocWithAddress()"
+                  >
+                    <option value="" id="idDocument2" selected disabled
+                      >Document</option
+                    >
+                    <!-- <option value="utilityBill">Utility Bill</option> -->
+                    <option value="bankStatement">Bank Statement</option>
+                    <option value="rentAgreement">Rental Agreement</option>
+                    <!-- <option value="driverLicenceAddress">Driver's License</option> -->
+                  </select>
+                  <div>
+                    <div
+                      class="docImgDiv"
+                      *ngIf="documentJson.docWithAddress"
+                      id="show_docWithAddress"
+                    >
+                      <div class="col-md-3">
+                        <img
+                          alt="front-image"
+                          src="./assets/img/document.svg"
+                          class="img-fluid docImg"
+                          (click)="imageInput.click()"
+                          style="cursor: pointer;width: 75%;margin-bottom: 10px;"
+                        />
+                        <label
+                          style="font-size: 14px;color: #199aad;"
+                          id="uploadAddressLbl"
+                        ></label>
+
+                        <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithAddress === 'utilityBill' ? 'utility bill' : documentJson.docWithAddress === 'bankStatement' ? 'bank statement' : documentJson.docWithAddress === 'rentAgreement' ?'rent agreement' : 'driving licence' }} image</label> -->
+                      </div>
+                      <input
+                        class="form-control d-none"
+                        type="file"
+                        (change)="selectFiles($event, 'addressImage')"
+                        #imageInput
+                      />
+                      <img
+                        *ngIf="preAddressImg"
+                        [src]="preAddressImg"
+                        height="80"
+                      />
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </form>
             </div>
-        </div>
-        <div class="row footerDiv">
-            <div class="col-sm-12">
-                <div class="col-sm-6 float-left">
-                    <ul class="bottomNav">
-                        <li> <a class="nav-link" routerLink="/FAQ" href="javascript:void(0);">FAQ</a> </li>
-                        <li> <a class="nav-link" routerLink="/contact" href="javascript:void(0);">Contact us</a> </li>
-                        <li> <a class="nav-link" routerLink="/doc" href="javascript:void(0);">How to integrate our service</a> </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 pageLanguage float-right">
-                    <label>Language</label>
-                    <select class=" " onChange="OnLanguageChange(this.value)">
-                        <option selected>English</option>
-                        <option>Latviski</option>
-                        <option>Türkçe</option>
-                    </select>
-                </div>
+            <div class="col-sm-6 my-auto text-justify">
+              <p
+                style="width: 70%; margin: 0 auto; margin-bottom: 25px;font-size: 15px;color: #999a9a;"
+                id="idDocInfoHelp01"
+              >
+                Please upload the images of chosen document. Make sure that the
+                uploaded images is are of acceptable quality.
+              </p>
+              <p
+                style="width: 70%; margin: 0 auto;font-size: 15px;color: #999a9a;"
+                id="idDocInfoHelp02"
+              >
+                Make a selfie or upload a photo of yourself. When taking photo
+                please avoid using sunglasses or anything else that hinders face
+                verification.
+              </p>
             </div>
+          </div>
+          <button
+            class="btn btn-primary px-5 btn-lg mt-4"
+            id="idSend"
+            (click)="generateCode()"
+          >
+            Send
+          </button>
         </div>
+      </div>
     </div>
 
     <script>
-        function OnLanguageChange(optLanguage){
-  
-          if(optLanguage == "Türkçe") {
-            document.getElementById("idDocInfo").innerHTML = "Belge bilgisi";
-            document.getElementById("idLang").innerHTML = "Dil";
-            document.getElementById("idTurk").innerHTML = "Türkçe";
-            document.getElementById("idContInfo").innerHTML = "İletişim Bilgileri";
-            document.getElementById("idDocIdPhoto").innerHTML = "Fotoğraflı Belgeniz";
-            // document.getElementById("idDocIdPhoto2").innerHTML = "xxx";
-            document.getElementById("idPassport").innerHTML = "Pasaport";
-            document.getElementById("idNatID").innerHTML = "Kimlik Kartınız";
-            document.getElementById("idDocument").innerHTML = "Belgeniz";
-            document.getElementById("idDocument2").innerHTML = "Belgeniz";
-            document.getElementById("idPhoto").innerHTML = "Fotoğraf";
-            document.getElementById("idDocAddress").innerHTML = "Adresinizin olduğu Belge";
-            document.getElementById("idAddressinDoc").innerHTML = "Address in document";
-            document.getElementById("idSend").innerHTML = "Gönder";
-            document.getElementById("idBack").innerHTML = "Önceki";
-            document.getElementById("idDocInfoHelp01").innerHTML = "Lütfen seçilen belgenin resimlerini yükleyin. Yüklenen resimlerin kabul edilebilir kalitede olduğundan emin olun.";
-            document.getElementById("idDocInfoHelp02").innerHTML = "Bir özçekim (selfie) yapın veya kendi fotoğrafınızı yükleyin. Fotoğraf çekerken, güneş gözlüğü veya yüz doğrulamasını engelleyen herhangi bir şey kullanmaktan kaçının.";
-          }
-          else if (optLanguage == "English") {
-            document.getElementById("idDocInfo").innerHTML = "Document Information";
-            document.getElementById("idLang").innerHTML = "Language";
-            document.getElementById("idTurk").innerHTML = "Turkish";
-            document.getElementById("idContInfo").innerHTML = "Contact Information";
-            document.getElementById("idDocIdPhoto").innerHTML = "Document with your photo";
-            document.getElementById("idDocIdPhoto2").innerHTML = "Upload photo of me";
-            document.getElementById("idDocIdPhoto3").innerHTML = "Take selfie of me";
-            document.getElementById("idPassport").innerHTML = "Passport";
-            document.getElementById("idNatID").innerHTML = "National ID";
-            document.getElementById("idDocument").innerHTML = "Document";
-            document.getElementById("idDocument2").innerHTML = "Document";
-            document.getElementById("idPhoto").innerHTML = "Photo";
-            document.getElementById("idDocAddress").innerHTML = "Document with your address";
-            document.getElementById("idAddressinDoc").innerHTML = "Address in document";
-            document.getElementById("idSend").innerHTML = "Send";
-            document.getElementById("idBack").innerHTML = "Back";
-            document.getElementById("idDocInfoHelp01").innerHTML = "Please upload the images of chosen document. Make sure that the uploaded images is are of acceptable quality.";
-            document.getElementById("idDocInfoHelp02").innerHTML = "Make a selfie or upload a photo of yourself. When taking photo please avoid using sunglasses or anything else that hinders face verification.";
-          }
-          else if (optLanguage == "Latviski") {
-            document.getElementById("idDocInfo").innerHTML = "Dokumenta informācija";
-            document.getElementById("idLang").innerHTML = "Valoda";
-            document.getElementById("idTurk").innerHTML = "Turciski";
-            document.getElementById("idContInfo").innerHTML = "Kontaktinformācija";
-            document.getElementById("idDocIdPhoto").innerHTML = "Dokuments are jūsu bildi";
-            document.getElementById("idDocAddress").innerHTML = "Dokuments ar jūsu adresi";
-            document.getElementById("idAddressinDoc").innerHTML = "Dokuments ar jūsu adresi";
-            document.getElementById("idDocIdPhoto2").innerHTML = "Augšuplādējiet jūsu fotoattēlu";
-            document.getElementById("idDocIdPhoto3").innerHTML = "Uzņemt jūsu attēlu";
-            document.getElementById("idPassport").innerHTML = "Pase";
-            document.getElementById("idNatID").innerHTML = "National ID";
-            document.getElementById("idDocument").innerHTML = "Dokuments";
-            document.getElementById("idDocument2").innerHTML = "Dokuments";
-            document.getElementById("idPhoto").innerHTML = "Foto";
-            document.getElementById("idSend").innerHTML = "Sūtīt";
-            document.getElementById("idBack").innerHTML = "Atpakaļ";
-            document.getElementById("idDocInfoHelp01").innerHTML = "Lūdzu, augšuplādējiet izvēlētā dokumenta fotoattēlus. Pirms augšupielādes, lūdzu, pārliecinaties, ka fotoattēli ir labā kvalitātē.";
-            document.getElementById("idDocInfoHelp02").innerHTML = "Uzņemiet pašportretu vai augšupielādējiet savu fotoattēlu. Izvairieties no saulesbriļļu vai citu priekšmetu, kas varētu apgrūtināt jūsu atpazīšanu, lietošanas fotoattēlos.";
-          }
+      function OnLanguageChange(optLanguage) {
+        if (optLanguage == "Türkçe") {
+          document.getElementById("idDocInfo").innerHTML = "Belge bilgisi";
+          document.getElementById("idLang").innerHTML = "Dil";
+          document.getElementById("idTurk").innerHTML = "Türkçe";
+          document.getElementById("idContInfo").innerHTML =
+            "İletişim Bilgileri";
+          document.getElementById("idDocIdPhoto").innerHTML =
+            "Fotoğraflı Belgeniz";
+          // document.getElementById("idDocIdPhoto2").innerHTML = "xxx";
+          document.getElementById("idPassport").innerHTML = "Pasaport";
+          document.getElementById("idNatID").innerHTML = "Kimlik Kartınız";
+          document.getElementById("idDocument").innerHTML = "Belgeniz";
+          document.getElementById("idDocument2").innerHTML = "Belgeniz";
+          document.getElementById("idPhoto").innerHTML = "Fotoğraf";
+          document.getElementById("idDocAddress").innerHTML =
+            "Adresinizin olduğu Belge";
+          document.getElementById("idAddressinDoc").innerHTML =
+            "Address in document";
+          document.getElementById("idSend").innerHTML = "Gönder";
+          document.getElementById("idBack").innerHTML = "Önceki";
+          document.getElementById("idDocInfoHelp01").innerHTML =
+            "Lütfen seçilen belgenin resimlerini yükleyin. Yüklenen resimlerin kabul edilebilir kalitede olduğundan emin olun.";
+          document.getElementById("idDocInfoHelp02").innerHTML =
+            "Bir özçekim (selfie) yapın veya kendi fotoğrafınızı yükleyin. Fotoğraf çekerken, güneş gözlüğü veya yüz doğrulamasını engelleyen herhangi bir şey kullanmaktan kaçının.";
+        } else if (optLanguage == "English") {
+          document.getElementById("idDocInfo").innerHTML =
+            "Document Information";
+          document.getElementById("idLang").innerHTML = "Language";
+          document.getElementById("idTurk").innerHTML = "Turkish";
+          document.getElementById("idContInfo").innerHTML =
+            "Contact Information";
+          document.getElementById("idDocIdPhoto").innerHTML =
+            "Document with your photo";
+          document.getElementById("idDocIdPhoto2").innerHTML =
+            "Upload photo of me";
+          document.getElementById("idDocIdPhoto3").innerHTML =
+            "Take selfie of me";
+          document.getElementById("idPassport").innerHTML = "Passport";
+          document.getElementById("idNatID").innerHTML = "National ID";
+          document.getElementById("idDocument").innerHTML = "Document";
+          document.getElementById("idDocument2").innerHTML = "Document";
+          document.getElementById("idPhoto").innerHTML = "Photo";
+          document.getElementById("idDocAddress").innerHTML =
+            "Document with your address";
+          document.getElementById("idAddressinDoc").innerHTML =
+            "Address in document";
+          document.getElementById("idSend").innerHTML = "Send";
+          document.getElementById("idBack").innerHTML = "Back";
+          document.getElementById("idDocInfoHelp01").innerHTML =
+            "Please upload the images of chosen document. Make sure that the uploaded images is are of acceptable quality.";
+          document.getElementById("idDocInfoHelp02").innerHTML =
+            "Make a selfie or upload a photo of yourself. When taking photo please avoid using sunglasses or anything else that hinders face verification.";
+        } else if (optLanguage == "Latviski") {
+          document.getElementById("idDocInfo").innerHTML =
+            "Dokumenta informācija";
+          document.getElementById("idLang").innerHTML = "Valoda";
+          document.getElementById("idTurk").innerHTML = "Turciski";
+          document.getElementById("idContInfo").innerHTML =
+            "Kontaktinformācija";
+          document.getElementById("idDocIdPhoto").innerHTML =
+            "Dokuments are jūsu bildi";
+          document.getElementById("idDocAddress").innerHTML =
+            "Dokuments ar jūsu adresi";
+          document.getElementById("idAddressinDoc").innerHTML =
+            "Dokuments ar jūsu adresi";
+          document.getElementById("idDocIdPhoto2").innerHTML =
+            "Augšuplādējiet jūsu fotoattēlu";
+          document.getElementById("idDocIdPhoto3").innerHTML =
+            "Uzņemt jūsu attēlu";
+          document.getElementById("idPassport").innerHTML = "Pase";
+          document.getElementById("idNatID").innerHTML = "National ID";
+          document.getElementById("idDocument").innerHTML = "Dokuments";
+          document.getElementById("idDocument2").innerHTML = "Dokuments";
+          document.getElementById("idPhoto").innerHTML = "Foto";
+          document.getElementById("idSend").innerHTML = "Sūtīt";
+          document.getElementById("idBack").innerHTML = "Atpakaļ";
+          document.getElementById("idDocInfoHelp01").innerHTML =
+            "Lūdzu, augšuplādējiet izvēlētā dokumenta fotoattēlus. Pirms augšupielādes, lūdzu, pārliecinaties, ka fotoattēli ir labā kvalitātē.";
+          document.getElementById("idDocInfoHelp02").innerHTML =
+            "Uzņemiet pašportretu vai augšupielādējiet savu fotoattēlu. Izvairieties no saulesbriļļu vai citu priekšmetu, kas varētu apgrūtināt jūsu atpazīšanu, lietošanas fotoattēlos.";
         }
-        OnLanguageChange('English')
+      }
+      OnLanguageChange("English");
     </script>
-    
+
     <script type="text/javascript">
-        $("#show_docWithPhoto1").hide();
-        $("#show_docWithPhoto2").hide();
-        $("#show_docWithPhoto3").hide();
+      $("#show_docWithPhoto1").hide();
+      $("#show_docWithPhoto2").hide();
+      $("#show_docWithPhoto3").hide();
 
-        $("#show_docWithAddress").hide();
+      $("#show_docWithAddress").hide();
 
-        function selectDocWithPhoto() {
-            var docWithPhoto = document.getElementById("docWithPhoto").value;
-            if(docWithPhoto === 'passport' || docWithPhoto === 'driverLicence'){
-                $("#show_docWithPhoto1").show();
-                $("#show_docWithPhoto2").hide();
-                $("#show_docWithPhoto3").hide();
-            }
-            if(docWithPhoto === 'nationalId'){
-                $("#show_docWithPhoto2").show();
-                $("#show_docWithPhoto3").show();
-                $("#show_docWithPhoto1").hide();
-            }
-
-
-            console.log(">> : ", docWithPhoto)
+      function selectDocWithPhoto() {
+        var docWithPhoto = document.getElementById("docWithPhoto").value;
+        if (docWithPhoto === "passport" || docWithPhoto === "driverLicence") {
+          $("#show_docWithPhoto1").show();
+          $("#show_docWithPhoto2").hide();
+          $("#show_docWithPhoto3").hide();
+        }
+        if (docWithPhoto === "nationalId") {
+          $("#show_docWithPhoto2").show();
+          $("#show_docWithPhoto3").show();
+          $("#show_docWithPhoto1").hide();
         }
 
-        function selectDocWithAddress() {
-            var docWithAddress = document.getElementById("docWithAddress").value;
+        console.log(">> : ", docWithPhoto);
+      }
 
-            if(docWithAddress === 'bankStatement'){
-                document.getElementById("uploadAddressLbl").innerHTML = "Upload bank statement image";
-            }else{
-                document.getElementById("uploadAddressLbl").innerHTML = "Upload rent agreement image";
-            }
+      function selectDocWithAddress() {
+        var docWithAddress = document.getElementById("docWithAddress").value;
 
-            if(docWithAddress){
-                $("#show_docWithAddress").show();
-            }else{
-                $("#show_docWithAddress").hide();
-            }
+        if (docWithAddress === "bankStatement") {
+          document.getElementById("uploadAddressLbl").innerHTML =
+            "Upload bank statement image";
+        } else {
+          document.getElementById("uploadAddressLbl").innerHTML =
+            "Upload rent agreement image";
+        }
 
-            console.log(">> : ", docWithPhoto)
-        }        
+        if (docWithAddress) {
+          $("#show_docWithAddress").show();
+        } else {
+          $("#show_docWithAddress").hide();
+        }
 
-
-
+        console.log(">> : ", docWithPhoto);
+      }
     </script>
-</body>
-
+  </body>
 </html>
