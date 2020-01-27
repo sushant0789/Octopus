@@ -473,6 +473,23 @@
 .audio-hide {
   display: none;
 }
+.width-100 {
+  width: 100%;
+}
+.width-70 {
+  width: 70%;
+  margin: auto;
+  margin-bottom: 1.5rem;
+}
+.clearfix {
+  clear: both;
+}
+.mo-hide {
+  display: inline;
+}
+.mo-show {
+  display: none;
+}
 @media (max-width: 768px) {
   .pageHeader {
     margin-top: 15px;
@@ -506,5 +523,22 @@
   }
   hr {
     display: none;
+  }
+  .width-70 {
+    width: 100%;
+  }
+  small.float-right {
+    float: left !important;
+    margin-bottom: 1rem;
+  }
+  .mo-hide {
+    display: none;
+  }
+  .mo-show {
+    display: inline;
+  }
+  .headerLogo.mobile {
+    margin-bottom: 1rem;
+    float: right;
   }
 }

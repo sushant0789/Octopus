@@ -8,44 +8,33 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>Document Information</title>
-    <link rel="stylesheet" href="./assets/css/main.css" />
-    <link rel="stylesheet" href="./assets/css/custom.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"
-    />
-    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
-    <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
-    <script>
-      $(function() {
-        $('[data-toggle="popover"]').popover();
-      });
-    </script>
   </head>
 
   <body>
     <div class="container" id="wrapper">
       <div class="row pageHeader">
-        <div class="col-7">
+        <div class="col-md-7 col-5">
           <button class="btn btn-link" (click)="back()" id="idBack">
             <i class="material-icons">arrow_back</i> BACK
           </button>
         </div>
-        <div class="col-5">
-          <div class="col-7 pageLanguage float-left">
+        <div class="col-7 mo-show">
+          <img
+            alt="logo"
+            src="./assets/img/verifeye-logo.svg"
+            class="img-fluid headerLogo mobile"
+            width="180"
+          />
+        </div>
+        <div class="col-md-5">
+          <div class="col-12 col-md-7 pageLanguage float-left">
             <label>Language :</label>
             <select class="selectpicker ">
               <option>English</option>
               <option>Spanish</option>
             </select>
           </div>
-          <div class="float-right col-5">
+          <div class="float-right col-5 mo-hide">
             <img
               alt="logo"
               src="./assets/img/verifeye-logo.svg"
@@ -105,12 +94,14 @@
                   </div>
                 </div>
                 <div class="form-group float-left w-100">
-                  <label id="idDocIdPhoto">Document with Photo</label>
+                  <label id="idDocIdPhoto" class="float-left"
+                    >Document with Photo</label
+                  >
                   <small class="float-right"
                     >(Supported types: jpeg,png. Max size is 16MB)</small
                   >
                   <select
-                    class="form-control border"
+                    class="form-control border mb-3"
                     name="docWithPhoto"
                     data-width="100%"
                     [(ngModel)]="documentJson.docWithPhoto"
@@ -136,7 +127,7 @@
                         documentJson.docWithPhoto === 'driverLicence'
                       "
                     >
-                      <div class="col-md-3">
+                      <div class="col-md-3 col-6">
                         <img
                           alt="front-image"
                           src="./assets/img/passport-spread.svg"
@@ -148,7 +139,7 @@
                         >
                         <!-- <label style="font-size: 14px;color: #199aad;" >Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
                       </div>
-                      <div class="col-md-3">
+                      <div class="col-md-3 col-6">
                         <input
                           class="form-control d-none"
                           type="file"
@@ -163,11 +154,11 @@
                       </div>
                     </div>
                     <div
-                      class="docImgDiv col-md-3"
+                      class="docImgDiv row mb-3"
                       id="show_docWithPhoto2"
                       *ngIf="documentJson.docWithPhoto === 'nationalId'"
                     >
-                      <div>
+                      <div class="col-md-3 col-6">
                         <img
                           alt="front-image"
                           src="./assets/img/card-front.svg"
@@ -179,25 +170,26 @@
                         >
                         <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
                       </div>
-                      <input
-                        class="form-control d-none"
-                        type="file"
-                        (change)="selectFiles($event, 'frontImage')"
-                        #imageInput
-                      />
-                      <img
-                        *ngIf="preFrontImg"
-                        [src]="preFrontImg"
-                        height="80"
-                      />
-                      <br />
+                      <div class="col-md-3 col-6">
+                        <input
+                          class="form-control d-none"
+                          type="file"
+                          (change)="selectFiles($event, 'frontImage')"
+                          #imageInput
+                        />
+                        <img
+                          *ngIf="preFrontImg"
+                          [src]="preFrontImg"
+                          height="80"
+                        />
+                      </div>
                     </div>
                     <div
-                      class="docImgDiv col-md-3"
+                      class="docImgDiv row"
                       id="show_docWithPhoto3"
                       *ngIf="documentJson.docWithPhoto === 'nationalId'"
                     >
-                      <div>
+                      <div class="col-md-3 col-6">
                         <img
                           alt="front-image"
                           src="./assets/img/card-front.svg"
@@ -210,24 +202,30 @@
 
                         <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} back image</label> -->
                       </div>
-                      <input
-                        class="form-control d-none"
-                        type="file"
-                        (change)="selectFiles($event, 'backImage')"
-                        #imageInput
-                      />
-                      <img *ngIf="preBackImg" [src]="preBackImg" height="80" />
-                      <br />
+                      <div class="col-md-3 col-6">
+                        <input
+                          class="form-control d-none"
+                          type="file"
+                          (change)="selectFiles($event, 'backImage')"
+                          #imageInput
+                        />
+                        <img
+                          *ngIf="preBackImg"
+                          [src]="preBackImg"
+                          height="80"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="form-group float-left w-100">
-                  <label id="idPhoto">Photo</label>
+                  <label id="idPhoto" class="float-left">Photo</label>
                   <small class="float-right"
                     >(Supported types: jpeg,png. Max size is 16MB)</small
                   >
+                  <div class="clearfix"></div>
                   <div class="docImgDiv row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                       <img
                         alt="upload-selfie"
                         src="./assets/img/selfie.svg"
@@ -244,7 +242,7 @@
                       (change)="selectFiles($event, 'selfieImage')"
                       #imageInput
                     />
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                       <img
                         alt="take-selfie"
                         src="./assets/img/camera.svg"
@@ -255,14 +253,13 @@
                         >Take selfie of me</label
                       >
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-6">
                       <img
                         *ngIf="preSelfieImg"
                         [src]="preSelfieImg"
                         height="80"
-                        style="cursor:pointer;margin-bottom:10px;"
+                        class="img-prev"
                       />
-                      <br />
                     </div>
                   </div>
                 </div>
@@ -273,12 +270,14 @@
                   <input class="form-control" name="InputAddress" type="text" />
                 </div>
                 <div class="form-group float-left w-100">
-                  <label id="idDocAddress">Document with your address</label>
+                  <label id="idDocAddress" class="float-left"
+                    >Document with your address</label
+                  >
                   <small class="float-right"
                     >(Supported types: jpeg,png. Max size is 16MB)</small
                   >
                   <select
-                    class="form-control border"
+                    class="form-control border mb-3"
                     name="docWithAddress"
                     data-width="100%"
                     [(ngModel)]="documentJson.docWithAddress"
@@ -295,54 +294,45 @@
                   </select>
                   <div>
                     <div
-                      class="docImgDiv"
+                      class="docImgDiv row"
                       *ngIf="documentJson.docWithAddress"
                       id="show_docWithAddress"
                     >
-                      <div class="col-md-3">
+                      <div class="col-md-3 col-6">
                         <img
                           alt="front-image"
                           src="./assets/img/document.svg"
                           class="img-fluid docImg"
                           (click)="imageInput.click()"
-                          style="cursor: pointer;width: 75%;margin-bottom: 10px;"
                         />
-                        <label
-                          style="font-size: 14px;color: #199aad;"
-                          id="uploadAddressLbl"
-                        ></label>
+                        <label class="img-label" id="uploadAddressLbl"></label>
 
                         <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithAddress === 'utilityBill' ? 'utility bill' : documentJson.docWithAddress === 'bankStatement' ? 'bank statement' : documentJson.docWithAddress === 'rentAgreement' ?'rent agreement' : 'driving licence' }} image</label> -->
                       </div>
-                      <input
-                        class="form-control d-none"
-                        type="file"
-                        (change)="selectFiles($event, 'addressImage')"
-                        #imageInput
-                      />
-                      <img
-                        *ngIf="preAddressImg"
-                        [src]="preAddressImg"
-                        height="80"
-                      />
-                      <br />
+                      <div class="col-md-3 col-6">
+                        <input
+                          class="form-control d-none"
+                          type="file"
+                          (change)="selectFiles($event, 'addressImage')"
+                          #imageInput
+                        />
+                        <img
+                          *ngIf="preAddressImg"
+                          [src]="preAddressImg"
+                          height="80"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </form>
             </div>
             <div class="col-sm-6 my-auto text-justify">
-              <p
-                style="width: 70%; margin: 0 auto; margin-bottom: 25px;font-size: 15px;color: #999a9a;"
-                id="idDocInfoHelp01"
-              >
+              <p class="width-70" id="idDocInfoHelp01">
                 Please upload the images of chosen document. Make sure that the
                 uploaded images is are of acceptable quality.
               </p>
-              <p
-                style="width: 70%; margin: 0 auto;font-size: 15px;color: #999a9a;"
-                id="idDocInfoHelp02"
-              >
+              <p class="width-70" id="idDocInfoHelp02">
                 Make a selfie or upload a photo of yourself. When taking photo
                 please avoid using sunglasses or anything else that hinders face
                 verification.
@@ -350,7 +340,7 @@
             </div>
           </div>
           <button
-            class="btn btn-primary px-5 btn-lg mt-4"
+            class="btn btn-primary px-5 btn-lg mb-4"
             id="idSend"
             (click)="generateCode()"
           >
@@ -359,7 +349,25 @@
         </div>
       </div>
     </div>
-
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"
+    />
+    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <script>
+      $(function() {
+        $('[data-toggle="popover"]').popover();
+      });
+    </script>
     <script>
       function OnLanguageChange(optLanguage) {
         if (optLanguage == "Türkçe") {
