@@ -327,7 +327,7 @@
 }
 
 .docImg {
-  height: 60%;
+  height: 60px;
   cursor: pointer;
   margin-bottom: 10px;
 }
@@ -350,7 +350,7 @@
 .infoTbl td:first-child {
   font-size: 16px;
   font-weight: bold;
-  float: right;
+  text-align: right;
 }
 
 .loader,
@@ -490,7 +490,31 @@
 .mo-show {
   display: none;
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  .infoTbl {
+    table-layout: fixed;
+  }
+  .infoTbl td {
+    padding-left: 0;
+    padding-right: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    /* Opera 7 */
+    word-wrap: break-word;
+    /* Internet Explorer 5.5+ */
+  }
+  .infoTbl td:first-child {
+    padding-right: 15px;
+  }
+  small.float-right {
+    float: left !important;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
   .pageHeader {
     margin-top: 15px;
   }
@@ -503,7 +527,6 @@
   .infoTbl th {
     padding-left: 0;
     padding-right: 0;
-    color: #0093a8;
   }
   .infoTbl td {
     padding-left: 0;
@@ -530,6 +553,7 @@
   small.float-right {
     float: left !important;
     margin-bottom: 1rem;
+    width: 100%;
   }
   .mo-hide {
     display: none;
