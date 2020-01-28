@@ -543,6 +543,7 @@
   .infoTbl td:first-child {
     float: left;
     padding-right: 15px;
+    text-align: left;
   }
   hr {
     display: none;
