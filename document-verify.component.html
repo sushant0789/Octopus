@@ -437,6 +437,7 @@
           <button
             class="btn btn-primary px-5 btn-lg mt-4 mb-4"
             (click)="next()"
+            id="next-to-check"
           >
             Next
           </button>
@@ -462,6 +463,9 @@
       $(function() {
         $('[data-toggle="popover"]').popover();
       });
+      document.getElementById("next-to-check").onclick = function() {
+        location.href = "check.component.html";
+      };
     </script>
   </body>
 </html>
