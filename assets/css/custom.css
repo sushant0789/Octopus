@@ -300,7 +300,7 @@
 }
 
 .input-select-div {
-  display: inline-block !important;
+  display: block !important;
   float: left !important;
   margin-right: 5px !important;
   position: relative !important;
