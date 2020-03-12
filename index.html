@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Document Information</title>
+</head>
+
+<body>
+    <div class="container" id="wrapper">
+        <div class="row pageHeader">
+            <!-- <button class="btn btn-link" (click)="back()"> <i class="material-icons">arrow_back</i> BACK</button> -->
+            <div class="col-md-4 col-5 col-lg-7">
+                <span>Octopus</span>
+            </div>
+            <div class="col-7 mo-show">
+                <img alt="logo" src="./assets/img/verifeye-logo.svg" class="img-fluid headerLogo mobile" width="180" />
+            </div>
+            <div class="col-md-8 col-lg-5">
+                <div class="col-12 col-md-7 pageLanguage float-left">
+                    <label>Language :</label>
+                    <select class="selectpicker ">
+                        <option>English</option>
+                        <option>Spanish</option>
+                    </select>
+                </div>
+                <div class="float-right col-5 mo-hide">
+                    <img alt="logo" src="./assets/img/verifeye-logo.svg" class="img-fluid headerLogo" width="180" />
+                </div>
+            </div>
+        </div>
+        <div class="row contentClass">
+            <div class="col-sm-12 steps active">
+                <h2 class="display-4">Customer Rights</h2>
+                <p class="lead">
+                    Our contract with the financial institution you are applying to open
+                    an account with requires that we collect your personal data<br />
+                    Please read the following rights and tick checkboxes. You have:
+                </p>
+                <div class="rightsList">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights1" [(ngModel)]="rights1"
+                            (change)="onCheckboxChagen($event, 'Right to be forgotten')" />
+                        <label class="custom-control-label" for="rights1">Right to be forgotten
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights2" [(ngModel)]="rights2"
+                            (change)="onCheckboxChagen($event, 'Right to erase data')" />
+                        <label class="custom-control-label" for="rights2">Right to erase data
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights3" [(ngModel)]="rights3"
+                            (change)="onCheckboxChagen($event, 'Right to withdraw consent')" />
+                        <label class="custom-control-label" for="rights3">Right to withdraw consent
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights4" [(ngModel)]="rights4" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'Right to rectify and transfer data (data portability) '
+                  )
+                " />
+                        <label class="custom-control-label" for="rights4">Right to rectify and transfer data (data
+                            portability)
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights5" [(ngModel)]="rights5" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'Right to object and complain to supervisory authority'
+                  )
+                " />
+                        <label class="custom-control-label" for="rights5">Right to object and complain to supervisory
+                            authority
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights6" [(ngModel)]="rights6" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'Right to know where and for how long data is stored'
+                  )
+                " />
+                        <label class="custom-control-label" for="rights6">Right to know where and for how long data is
+                            stored
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights7" [(ngModel)]="rights7" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'Right to have contact info of the entity storing data'
+                  )
+                " />
+                        <label class="custom-control-label" for="rights7">Right to have contact info of the entity
+                            storing data
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights8" [(ngModel)]="rights8" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'I allow the agent to take a photo of me during the verification call'
+                  )
+                " />
+                        <label class="custom-control-label" for="rights8">I allow the agent to take a photo of me during
+                            the verification
+                            call
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="rights9" [(ngModel)]="rights9" (change)="
+                  onCheckboxChagen(
+                    $event,
+                    'I accept the Terms & Conditions and Privacy Policy Language'
+                  )
+                " />
+                        <label class="custom-control-label" for="rights9">I accept the Terms & Conditions and Privacy
+                            Policy Language
+                            <i class="material-icons" data-toggle="popover" data-trigger="hover" data-placement="right"
+                                data-content="more info">info</i>
+                        </label>
+                    </div>
+                </div>
+                <button class="btn btn-primary px-5 btn-lg mt-4 mb-4" (click)="next()">
+                    Next
+                </button>
+            </div>
+            <div class="col-sm-12 steps">
+                <h2 class="display-4" id="idDocInfo">Document Information</h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form class="thm-form">
+                            <div class="form-group float-left w-100">
+                                <label id="idLang">Language</label>
+                                <select class="form-control border" data-width="100%"
+                                    [(ngModel)]="documentJson.language" name="language">
+                                    <option value="ar">Arabic</option>
+                                    <option value="zh">Chinese</option>
+                                    <option value="da">Danish</option>
+                                    <option value="nl">Dutch</option>
+                                    <option value="en" selected="">English</option>
+                                    <option value="et">Estonian</option>
+                                    <option value="fr">French</option>
+                                    <option value="de">German</option>
+                                    <option value="is">Icelandic</option>
+                                    <option value="in">Indonesian</option>
+                                    <option value="it">Italian</option>
+                                    <option value="ja">Japanese</option>
+                                    <option value="ko">Korean</option>
+                                    <option value="no">Norwegian</option>
+                                    <option value="pl">Polish</option>
+                                    <option value="pt">Portuguese</option>
+                                    <option value="ro">Romanian</option>
+                                    <option value="ru">Russian</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="sv">Swedish</option>
+                                    <option value="tr" id="idTurk">Turkish</option>
+                                </select>
+                            </div>
+                            <div class="form-group float-left w-100">
+                                <label id="idContInfo">Contact Information</label>
+                                <div>
+                                    <div>
+                                        <input class="CountryNumberInput form-control" name="InputPhone" type="text"
+                                            id="phone" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group float-left w-100">
+                                <label id="idDocIdPhoto" class="float-left">Document with Photo</label>
+                                <small class="float-right">(Supported types: jpeg,png. Max size is 16MB)</small>
+                                <select class="form-control border mb-3" name="docWithPhoto" data-width="100%"
+                                    [(ngModel)]="documentJson.docWithPhoto" id="docWithPhoto"
+                                    (change)="selectDocWithPhoto()" onchange="selectDocWithPhoto()">
+                                    <option value="" id="idDocument" selected disabled>Document</option>
+                                    <option value="passport" id="idPassport">Passport</option>
+                                    <option value="nationalId" id="idNatID">National ID Card</option>
+                                    <!-- <option value="driverLicence">Driver's Licence</option> -->
+                                </select>
+                                <div>
+                                    <div class="docImgDiv row" id="show_docWithPhoto1" *ngIf="
+                              documentJson.docWithPhoto === 'passport' ||
+                              documentJson.docWithPhoto === 'driverLicence'
+                            ">
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <img alt="front-image" src="./assets/img/passport-spread.svg"
+                                                class="img-fluid docImg" (click)="imageInput.click()" />
+                                            <label class="img-label">Upload passport front image</label>
+                                            <!-- <label style="font-size: 14px;color: #199aad;" >Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
+                                        </div>
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <input class="form-control d-none" type="file"
+                                                (change)="selectFiles($event, 'frontImage')" #imageInput />
+                                            <img *ngIf="preFrontImg" alt="pre-front-image" [src]="preFrontImg"
+                                                height="80" src="assets/img/user.png" />
+                                        </div>
+                                    </div>
+                                    <div class="docImgDiv row mb-3" id="show_docWithPhoto2"
+                                        *ngIf="documentJson.docWithPhoto === 'nationalId'">
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <img alt="front-image" src="./assets/img/card-front.svg"
+                                                class="img-fluid docImg" (click)="imageInput.click()" />
+                                            <label class="img-label">Upload ID card front image</label>
+                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} front image</label> -->
+                                        </div>
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <input class="form-control d-none" type="file"
+                                                (change)="selectFiles($event, 'frontImage')" #imageInput />
+                                            <img alt="pre-front-image" *ngIf="preFrontImg" [src]="preFrontImg"
+                                                height="80" src="assets/img/user.png" />
+                                        </div>
+                                    </div>
+                                    <div class="docImgDiv row" id="show_docWithPhoto3"
+                                        *ngIf="documentJson.docWithPhoto === 'nationalId'">
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <img alt="front-image" src="./assets/img/card-front.svg"
+                                                class="img-fluid docImg" (click)="imageInput.click()" />
+                                            <label class="img-label">Upload ID card back image</label>
+
+                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithPhoto === 'nationalId' ? 'ID card' : documentJson.docWithPhoto === 'driverLicence' ? 'driving licence' : 'passport' }} back image</label> -->
+                                        </div>
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <input class="form-control d-none" type="file"
+                                                (change)="selectFiles($event, 'backImage')" #imageInput />
+                                            <img alt="back-image" *ngIf="preBackImg" [src]="preBackImg" height="80"
+                                                src="assets/img/user.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group float-left w-100">
+                                <label id="idPhoto" class="float-left">Photo</label>
+                                <small class="float-right">(Supported types: jpeg,png. Max size is 16MB)</small>
+                                <div class="clearfix"></div>
+                                <div class="docImgDiv row">
+                                    <div class="col-md-4 col-6 col-lg-3">
+                                        <img alt="upload-selfie" src="./assets/img/selfie.svg" class="img-fluid docImg"
+                                            (click)="imageInput.click()" />
+                                        <label class="img-label" id="idDocIdPhoto2">Upload photo of me</label>
+                                    </div>
+                                    <input class="form-control d-none" type="file"
+                                        (change)="selectFiles($event, 'selfieImage')" #imageInput />
+                                    <div class="col-md-4 col-6 col-lg-3">
+                                        <img alt="take-selfie" src="./assets/img/camera.svg" class="img-fluid docImg"
+                                            (click)="takeSelfie()" />
+                                        <label class="img-label" id="idDocIdPhoto3">Take selfie of me</label>
+                                    </div>
+                                    <div class="col-md-4 col-6 col-lg-3">
+                                        <img alt="pre-selfie-image" *ngIf="preSelfieImg" [src]="preSelfieImg"
+                                            height="80" class="img-prev" src="assets/img/user.png" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group float-left w-100">
+                                <label class="float-left" id="idAddressinDoc">Address in document</label>
+                                <input class="form-control" name="InputAddress" type="text" />
+                            </div>
+                            <div class="form-group float-left w-100">
+                                <label id="idDocAddress" class="float-left">Document with your address</label>
+                                <small class="float-right">(Supported types: jpeg,jpg,png,pdf. Max size is
+                                    16MB)</small>
+                                <select class="form-control border mb-3" name="docWithAddress" data-width="100%"
+                                    [(ngModel)]="documentJson.docWithAddress" id="docWithAddress"
+                                    onchange="selectDocWithAddress()">
+                                    <option value="" id="idDocument2" selected disabled>Document</option>
+                                    <!-- <option value="utilityBill">Utility Bill</option> -->
+                                    <option value="bankStatement">Bank Statement</option>
+                                    <option value="rentAgreement">Rental Agreement</option>
+                                    <!-- <option value="driverLicenceAddress">Driver's License</option> -->
+                                </select>
+                                <div>
+                                    <div class="docImgDiv row" *ngIf="documentJson.docWithAddress"
+                                        id="show_docWithAddress">
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <img alt="front-image" src="./assets/img/document.svg"
+                                                class="img-fluid docImg" (click)="imageInput.click()" />
+                                            <label class="img-label" id="uploadAddressLbl"></label>
+
+                                            <!-- <label style="font-size: 14px;color: #199aad;">Upload {{documentJson.docWithAddress === 'utilityBill' ? 'utility bill' : documentJson.docWithAddress === 'bankStatement' ? 'bank statement' : documentJson.docWithAddress === 'rentAgreement' ?'rent agreement' : 'driving licence' }} image</label> -->
+                                        </div>
+                                        <div class="col-md-4 col-6 col-lg-3">
+                                            <input class="form-control d-none" type="file"
+                                                (change)="selectFiles($event, 'addressImage')" #imageInput />
+                                            <img alt="pre-address-image" *ngIf="preAddressImg" [src]="preAddressImg"
+                                                height="80" src="assets/img/user.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 my-auto text-justify">
+                        <p class="width-70" id="idDocInfoHelp01">
+                            Please upload the images of chosen document. Make sure that the
+                            uploaded images is are of acceptable quality.
+                        </p>
+                        <p class="width-70" id="idDocInfoHelp02">
+                            Make a selfie or upload a photo of yourself. When taking photo
+                            please avoid using sunglasses or anything else that hinders face
+                            verification.
+                        </p>
+                    </div>
+                </div>
+                <button class="btn btn-primary px-5 btn-lg mt-4 mb-4" (click)="generateCode()">
+                    Send
+                </button>
+            </div>
+            <div class="steps">
+                <div class="col-md-6">
+                    <table class="table table-borderless infoTbl">
+                        <tr>
+                            <th colspan="2">FACE VERIFICATION RESULT</th>
+                        </tr>
+                        <tr>
+                            <td>Facial Match Result</td>
+                            <td class="color-green">Success</td>
+                        </tr>
+                        <tr>
+                            <td>Facial Match Score</td>
+                            <td>85</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="d-flex border-between">
+                    <div class="col-md-6">
+                        <table class="table table-borderless infoTbl">
+                            <tr>
+                                <th colspan="2">DOCUMENT VERIFICATION RESULT</th>
+                            </tr>
+                            <tr>
+                                <td>Verification Status</td>
+                                <td class="color-green">Successful</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData &&
+                          verifyDocumentData.response.IDAuthentication
+                        ">
+                                <td>ID Authentication</td>
+                                <td>Passed</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IDName">
+                                <td>ID Name</td>
+                                <td>Oklahoma (OK) Driver License</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.IDType">
+                                <td>ID Type</td>
+                                <td>Drivers License</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.BirthDate
+                        ">
+                                <td>Birth Date</td>
+                                <td>04\/01\/1971</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.DocumentNumber
+                        ">
+                                <td>Document Number</td>
+                                <td>12541241</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.ExpirationDate
+                        ">
+                                <td>Expiration Date</td>
+                                <td>04\/01\/1971</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.FirstName
+                        ">
+                                <td>First Name</td>
+                                <td>abc</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.MiddleName
+                        ">
+                                <td>Middle Name</td>
+                                <td>xyz</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Surname">
+                                <td>Surname</td>
+                                <td>www</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.FullName">
+                                <td>Full Name</td>
+                                <td>sdfg fd dfg</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.GivenName
+                        ">
+                                <td>Given Name</td>
+                                <td>dfsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.IssueDate
+                        ">
+                                <td>Issue Date</td>
+                                <td>345345</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData &&
+                          verifyDocumentData.response.IssuingStateCode
+                        ">
+                                <td>Issuing State Code</td>
+                                <td>55555</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData &&
+                          verifyDocumentData.response.IssuingStateName
+                        ">
+                                <td>Issuing State Name</td>
+                                <td>dgdfg</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Sex">
+                                <td>Sex</td>
+                                <td>fdgdfg</td>
+                            </tr>
+                            <tr *ngIf="verifyDocumentData && verifyDocumentData.response.Address">
+                                <td>Address</td>
+                                <td>fgdfg,dfg ,fgdg, 1020</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.AddressCity
+                        ">
+                                <td>Address City</td>
+                                <td>terter</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.AddressLine1
+                        ">
+                                <td>Address Line1</td>
+                                <td>aaaaa</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData &&
+                          verifyDocumentData.response.AddressPostalCode
+                        ">
+                                <td>Address Postal Code</td>
+                                <td>5345</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyDocumentData && verifyDocumentData.response.AddressState
+                        ">
+                                <td>Address State</td>
+                                <td>dfgdfg</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-borderless infoTbl">
+                            <tr>
+                                <th colspan="2">ADDRESS VERIFICATION RESULT</th>
+                            </tr>
+                            <tr *ngIf="
+                          !verifyAddressInfo || !verifyAddressInfo.Records[0].Results
+                        ">
+                                <td>Address Status</td>
+                                <td>
+                                    Address Verification Failed, Address not detect in address
+                                    documents
+                                </td>
+                            </tr>
+                            <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Results">
+                                <td>Address Status</td>
+                                <td>aaaa</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].FormattedAddress
+                        ">
+                                <td>Formatted Address</td>
+                                <td>asdasd</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].Organization
+                        ">
+                                <td>Organization</td>
+                                <td>dfsdfsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine1
+                        ">
+                                <td>AddressLine1</td>
+                                <td>df sdf sdf sd</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine2
+                        ">
+                                <td>AddressLine2</td>
+                                <td>df sf sfs</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine3
+                        ">
+                                <td>AddressLine3</td>
+                                <td>dfsdfsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine4
+                        ">
+                                <td>AddressLine4</td>
+                                <td>fdggdfgdfg</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine5
+                        ">
+                                <td>AddressLine5</td>
+                                <td>fgdfg</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine6
+                        ">
+                                <td>AddressLine6</td>
+                                <td>fdggdfg</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine7
+                        ">
+                                <td>AddressLine7</td>
+                                <td>dffsdfsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressLine8
+                        ">
+                                <td>AddressLine8</td>
+                                <td>dfsdfsdf</td>
+                            </tr>
+                            <tr *ngIf="verifyAddressInfo && verifyAddressInfo.Records[0].Locality">
+                                <td>Locality</td>
+                                <td>sssss</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].SubAdministrativeArea
+                        ">
+                                <td>Sub Administrative Area</td>
+                                <td>cccc</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].AdministrativeArea
+                        ">
+                                <td>Administrative Area</td>
+                                <td>rrrr</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].PostalCode
+                        ">
+                                <td>PostalCode</td>
+                                <td>3433</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressType
+                        ">
+                                <td>AddressType</td>
+                                <td>dfsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].AddressKey
+                        ">
+                                <td>AddressKey</td>
+                                <td>dfsdfsfdsdf</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].CountryName
+                        ">
+                                <td>Country Name</td>
+                                <td>dfsdfsfd</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].CountryISO3166_1_Alpha2
+                        ">
+                                <td>CountryISO3166_1_Alpha2</td>
+                                <td>45</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].CountryISO3166_1_Alpha3
+                        ">
+                                <td>CountryISO3166_1_Alpha3</td>
+                                <td>3465</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].CountryISO3166_1_Numeric
+                        ">
+                                <td>CountryISO3166_1_Numeric</td>
+                                <td>4534535</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo &&
+                          verifyAddressInfo.Records[0].CountrySubdivisionCode
+                        ">
+                                <td>Country Subdivision Code</td>
+                                <td>234</td>
+                            </tr>
+                            <tr *ngIf="
+                          verifyAddressInfo && verifyAddressInfo.Records[0].Longitude
+                        ">
+                                <td>Longitude</td>
+                                <td>54645</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                    <button class="btn btn-primary px-5 btn-lg mt-4 mb-4" (click)="next()" id="next-to-check">
+                        Next
+                    </button>
+
+                </div>
+            </div>
+            <div class="col-sm-12 steps">
+                <h2 class="display-4">Technical Check</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="img-thumbnail">
+                            <video id="selfview" class="width-100" autoplay></video>
+                        </div>
+                        <div class="checkBtn mt-5">
+                            <button class="btn btn-outline-dark">
+                                <i class="material-icons">mic</i> Check Microphone
+                            </button>
+                        </div>
+                        <div class="checkBtn mt-3 mb-4">
+                            <button class="btn btn-outline-dark playBtn" (click)="playAudio($event)">
+                                <i class="material-icons">
+                                    play_circle_filled
+                                </i>
+                                Check Audio
+                                <audio class="audio-hide">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <span *ngIf="agents > 0">Online Agents : 2</span>
+                        <span class="agent-count">2</span>
+                        <!-- <span *ngIf="agents == 0">Agents are not available, Please wait some time</span>  -->
+                    </div>
+                </div>
+                <button *ngIf="camera_access" class="btn btn-primary px-5 btn-lg mt-4 mb-4" (click)="startCall()">
+                    Start Verification Call
+                </button>
+                <!-- <button class="btn btn-primary px-5 btn-lg mt-5" routerLink="/call/{{callID}}">Start Verification Call</button> -->
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="./assets/css/intlTelInput.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/custom.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css" />
+    <script src="./assets/js/jquery-3.4.1.slim.min.js"></script>
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+    <script src="./assets/js/intlTelInput.min.js"></script>
+    <script src="./assets/js/all.js"></script>
+</body>
+
+</html>
