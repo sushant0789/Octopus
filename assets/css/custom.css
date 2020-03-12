@@ -570,7 +570,10 @@
 .mo-show,
 .steps,
 .back-links-list,
-.back-links-list li {
+.back-links-list li,
+#show_docWithPhoto1,
+#show_docWithPhoto2,
+#show_docWithPhoto3 {
   display: none;
 }
 
