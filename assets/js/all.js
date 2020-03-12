@@ -155,7 +155,7 @@ function selectDocWithAddress() {
   }
 
   if (docWithAddress) {
-    $("#show_docWithAddress").show();
+    $("#show_docWithAddress").css("display", "flex");
   } else {
     $("#show_docWithAddress").hide();
   }
