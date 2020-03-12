@@ -12,7 +12,7 @@ $(document).ready(function () {
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/16.0.11/js/utils.js"
     });
 
-  $(document).on("click", ".btn.btn-primary.mt-4.mb-4", function () {
+  $(document).on("click", ".btn-next", function () {
     $(this)
       .closest(".steps")
       .removeClass("active");
@@ -20,18 +20,22 @@ $(document).ready(function () {
       .closest(".steps")
       .next(".steps")
       .addClass("active");
-
+    $('.desktop-logo').hide();
+    $('.back-links-list').show();
+    $('.back-links-list li').removeClass('active');
+    $('#' + $(this).data('id')).addClass('active');
   });
 
-  $(document).on("click", ".input-button-back", function () {
-    $(this)
-      .closest(".steps")
-      .removeClass("active");
-    $(this)
-      .closest(".steps")
-      .prev(".steps")
-      .addClass("active");
+  $('.back-links-list .btn-back').click(function () {
+    $('.steps').removeClass('active');
+    $('#' + $(this).data('id')).addClass('active');
+    $(this).closest('li').removeClass('active');
+    $(this).closest('li').prev('li').addClass('active');
+  });
 
+  $('.back-links-list li:first-child .btn-back').click(function () {
+    $('.desktop-logo').show();
+    $('.back-links-list').hide();
   });
 
   function OnLanguageChange(optLanguage) {

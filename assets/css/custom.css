@@ -562,12 +562,15 @@
 }
 
 .mo-hide,
-.steps.active {
+.steps.active,
+.back-links-list li.active {
   display: inline;
 }
 
 .mo-show,
-.steps {
+.steps,
+.back-links-list,
+.back-links-list li {
   display: none;
 }
 
@@ -579,6 +582,16 @@
 .d-flex {
   display: flex;
 }
+
+.back-links-list {
+  margin: 0;
+  padding: 0;
+}
+
+.back-links-list li {
+  list-style: none;
+}
+
 
 hr {
   visibility: hidden;
